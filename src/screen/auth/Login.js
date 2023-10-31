@@ -39,21 +39,23 @@ const Login = ({
 
   const handleMain = async value => {
     try {
-      // if (mobileNumber == 123 && password == 'abc') {
-      //   dispatch(Auth(value));
-      // } else {
-      //   //   ToastShow('Wrong UserName or Password');
-      //   alert('Mobile no and passward required');
-      // }
-      const response = await axios.post(
-        'https://tutor-tnyp.onrender.com/api/user/login',
-        {
-          email: 'pankaj@gmail.com',
-          password: 'pankaj@123',
-        },
-      );
+      if (mobileNumber == 123 && password == 'abc') {
+        dispatch(Auth(value));
+      } else {
+        //   ToastShow('Wrong UserName or Password');
+        alert('Mobile no and passward required');
+      }
+      dispatch(Auth(value));
 
-      console.log(response.data);
+      // const response = await axios.post(
+      //   'https://tutor-tnyp.onrender.com/api/user/login',
+      //   {
+      //     email: 'pankaj@gmail.com',
+      //     password: 'pankaj@123',
+      //   },
+      // );
+
+      // console.log(response.data);
       // dispatch(Auth(value));
     } catch (error) {
       console.error('Error:', error.message);
