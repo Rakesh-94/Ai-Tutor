@@ -56,6 +56,12 @@ const RejectAnswer = ({navigation}) => {
             fontStyle: 'normal',
             fontWeight: '500',
             padding: 15,
+            color: '#000',
+            ...Platform.select({
+              ios: {
+                paddingVertical: 20,
+              },
+            }),
           }}
         />
 

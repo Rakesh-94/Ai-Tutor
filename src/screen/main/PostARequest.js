@@ -14,7 +14,7 @@ import InputDropdown from '../../components/InputDropdown';
 const PostARequest = ({navigation}) => {
   //   const [mobileNumber, setMobileNumber] = useState('');
   const [catId, setCatId] = useState('');
-  const hellop = () => {
+  const hello = () => {
     alert('yes');
   };
 
@@ -22,7 +22,7 @@ const PostARequest = ({navigation}) => {
     <View style={{flex: 1, backgroundColor: '#FFF'}}>
       <BackHandler
         name={'Post a Request'}
-        add={hellop}
+        add={hello}
         showAdd={false}
         navigation={navigation}
       />
@@ -105,7 +105,17 @@ const PostARequest = ({navigation}) => {
             }}>
             <TextInput
               placeholder="Write here your query"
-              style={{marginLeft: 10, shadowColor: 'black'}}
+              style={{
+                marginLeft: 10,
+                shadowColor: 'black',
+                color: '#000',
+                ...Platform.select({
+                  ios: {
+                    paddingVertical: 15,
+                  },
+                }),
+              }}
+
               //   keyboardType="numeric"
               //   value={mobileNumber}
               //   onChangeText={handleMobileNumberChange}
@@ -137,7 +147,16 @@ const PostARequest = ({navigation}) => {
             }}>
             <TextInput
               placeholder="Add Price"
-              style={{marginLeft: 10, shadowColor: 'black'}}
+              style={{
+                marginLeft: 10,
+                shadowColor: 'black',
+                color: '#000',
+                ...Platform.select({
+                  ios: {
+                    paddingVertical: 15,
+                  },
+                }),
+              }}
               //   keyboardType="numeric"
               //   value={mobileNumber}
               //   onChangeText={handleMobileNumberChange}
@@ -169,7 +188,16 @@ const PostARequest = ({navigation}) => {
             }}>
             <TextInput
               placeholder="Add Duration"
-              style={{marginLeft: 10, shadowColor: 'black'}}
+              style={{
+                marginLeft: 10,
+                shadowColor: 'black',
+                color: '#000',
+                ...Platform.select({
+                  ios: {
+                    paddingVertical: 15,
+                  },
+                }),
+              }}
               //   keyboardType="numeric"
               //   value={mobileNumber}
               //   onChangeText={handleMobileNumberChange}

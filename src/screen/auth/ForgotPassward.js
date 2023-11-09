@@ -86,7 +86,7 @@ const ForgotPassward = ({navigation}) => {
               />
               <TextInput
                 placeholder="Enter your mobile number"
-                style={{marginLeft: 10, shadowColor: 'black'}}
+                style={{marginLeft: 10, shadowColor: 'black', color: '#000'}}
                 keyboardType="numeric"
                 value={mobileNumber}
                 onChangeText={handleMobileNumberChange}

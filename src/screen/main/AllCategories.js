@@ -38,6 +38,7 @@
 import {
   FlatList,
   Image,
+  Platform,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -122,56 +123,68 @@ const AllCategories = ({navigation}) => {
     );
   };
   return (
-    <View>
-      <TouchableOpacity
-        onPress={() => navigation.goBack()}
-        style={{
-          height: 40,
-          width: 40,
-          marginVertical: 10,
-          marginHorizontal: 20,
-          borderWidth: 0.5,
-          borderRadius: 10,
-          borderColor: '#F0F5F9',
-          shadowColor: '#F9BFFD',
-        }}>
-        <Image
-          source={require('../../assets/forgotBackButton.png')}
-          resizeMode="contain"
-          style={{height: '100%', width: '100%'}}
-        />
-      </TouchableOpacity>
-      <View style={{marginLeft: 20}}>
-        <Text style={{fontWeight: '600', fontSize: 24, color: '#000000'}}>
-          All Categories
-        </Text>
-      </View>
-      <View style={styles.inputbox}>
-        <Image
-          source={require('../../assets/searchIcon.png')}
-          style={{height: 20, width: 20, marginRight: 5}}
-        />
-        <TextInput placeholder="Search your Categoryries" />
-      </View>
-      <FlatList
-        data={users}
-        numColumns={4}
-        renderItem={_renderItem}
-        keyExtractor={item => item.id}
-        contentContainerStyle={
-          {
-            //   backgroundColor: 'red',
-            // width: "90%",
-            // alignSelf: "center",
-            // marginTop: 20,
+    <SafeAreaView style={{flex: 1}}>
+      <View style={{width: '90%', alignSelf: 'center'}}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{
+            height: 40,
+            width: 40,
+            marginVertical: 10,
+            marginHorizontal: 20,
+            borderWidth: 0.5,
+            borderRadius: 10,
+            borderColor: '#F0F5F9',
+            shadowColor: '#F9BFFD',
+          }}>
+          <Image
+            source={require('../../assets/forgotBackButton.png')}
+            resizeMode="contain"
+            style={{height: '100%', width: '100%'}}
+          />
+        </TouchableOpacity>
+        <View style={{marginLeft: 20}}>
+          <Text style={{fontWeight: '600', fontSize: 24, color: '#000000'}}>
+            All Categories
+          </Text>
+        </View>
+        <View style={styles.inputbox}>
+          <Image
+            source={require('../../assets/searchIcon.png')}
+            style={{height: 20, width: 20, marginRight: 5}}
+          />
+          <TextInput
+            placeholder="Search your Categoryries"
+            style={{
+              color: '#000',
+              ...Platform.select({
+                ios: {
+                  paddingVertical: 15,
+                },
+              }),
+            }}
+          />
+        </View>
+        <FlatList
+          data={users}
+          numColumns={4}
+          renderItem={_renderItem}
+          keyExtractor={item => item.id}
+          contentContainerStyle={
+            {
+              //   backgroundColor: 'red',
+              // width: "90%",
+              // alignSelf: "center",
+              // marginTop: 20,
+            }
           }
-        }
-        columnWrapperStyle={{
-          margin: 20,
-          alignSelf: 'center',
-        }}
-      />
-    </View>
+          columnWrapperStyle={{
+            margin: 20,
+            alignSelf: 'center',
+          }}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 export default AllCategories;
@@ -198,8 +211,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: 'white',
     marginTop: 15,
-    marginLeft: 25,
-    marginRight: 50,
+
     shadowColor: 'black',
     elevation: 5,
   },

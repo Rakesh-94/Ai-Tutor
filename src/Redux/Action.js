@@ -1,9 +1,8 @@
-import {Authentication} from './constants';
+import {Authentication, SET_USER_ONBOARD} from './constants';
 
-export function Auth(Auth) {
-  console.log('REDUX', Auth);
+export function Auth(value) {
   return {
-    type: Authentication,
-    payload: Auth,
+    type: SET_USER_ONBOARD,
+    payload: value,
   };
 }

@@ -188,6 +188,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     textAlign: 'center',
     fontSize: 20,
+    color: '#000',
   },
   resendContainer: {
     marginTop: 10,

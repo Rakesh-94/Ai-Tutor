@@ -89,7 +89,7 @@ const PasswardUpdate = ({navigation}) => {
                 />
                 <TextInput
                   placeholder="Enter your create passward"
-                  style={{marginLeft: 10, shadowColor: 'black'}}
+                  style={{marginLeft: 10, shadowColor: 'black', color: '#000'}}
                   secureTextEntry={!showPassword}
                   value={password}
                   onChangeText={text => setPassword(text)}
@@ -135,7 +135,7 @@ const PasswardUpdate = ({navigation}) => {
                 />
                 <TextInput
                   placeholder="Enter your confirm passward"
-                  style={{marginLeft: 10, shadowColor: 'black'}}
+                  style={{marginLeft: 10, shadowColor: 'black', color: '#000'}}
                   secureTextEntry={!showPasswordConfirm}
                   value={passwordCanfirm}
                   onChangeText={text => setPasswordCanfirm(text)}

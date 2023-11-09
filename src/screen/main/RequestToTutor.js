@@ -64,6 +64,12 @@ const RequestToTutor = ({navigation}) => {
                 marginLeft: 10,
                 shadowColor: 'black',
                 textAlignVertical: 'top',
+                color: '#000',
+                ...Platform.select({
+                  ios: {
+                    paddingVertical: 15,
+                  },
+                }),
               }}
               multiline={true}
               numberOfLines={8}
@@ -99,7 +105,16 @@ const RequestToTutor = ({navigation}) => {
             }}>
             <TextInput
               placeholder="Add Price"
-              style={{marginLeft: 10, shadowColor: 'black'}}
+              style={{
+                marginLeft: 10,
+                shadowColor: 'black',
+                color: '#000',
+                ...Platform.select({
+                  ios: {
+                    paddingVertical: 15,
+                  },
+                }),
+              }}
               //   keyboardType="numeric"
               //   value={mobileNumber}
               //   onChangeText={handleMobileNumberChange}

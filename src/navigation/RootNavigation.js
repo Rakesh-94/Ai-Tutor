@@ -9,7 +9,7 @@ import {useEffect, useState} from 'react';
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
-  const {stack} = useSelector(state => state.reducer);
+  const {isUserOnboard, access_token} = useSelector(state => state.auth);
 
   //   console.log(stack, '-0-0-0-0-');
 
@@ -20,14 +20,12 @@ const RootNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      {stack == 'Onbording' && (
+      {!isUserOnboard ? (
         <Stack.Screen name="IntroStack" component={IntroStack} />
-      )}
-      {stack == 'Auth' && (
-        <Stack.Screen name="AuthStack" component={AuthStack} />
-      )}
-      {stack == 'Main' && (
+      ) : access_token ? (
         <Stack.Screen name="MainStack" component={MainStack} />
+      ) : (
+        <Stack.Screen name="AuthStack" component={AuthStack} />
       )}
     </Stack.Navigator>
   );

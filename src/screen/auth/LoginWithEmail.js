@@ -1,7 +1,25 @@
+// import {StyleSheet, Text, View} from 'react-native';
+// import React from 'react';
+
+// const SignUp = () => {
+//   return (
+//     <View>
+//       <Text>SignUp</Text>
+//     </View>
+//   );
+// };
+
+// export default SignUp;
+
+// const styles = StyleSheet.create({});
+
 import {
   Image,
   ImageBackground,
   Keyboard,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -9,60 +27,14 @@ import {
   TouchableWithoutFeedback,
   View,
   useWindowDimensions,
-  ScrollView,
-  KeyboardAvoidingView,
-  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {Auth} from '../../Redux/Action';
-import axios from 'axios';
+// import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const Login = ({
-  navigation,
-  mobileNumber,
-  setMobileNumber,
-  password,
-  setPassword,
-  setAuthentication,
-}) => {
+const LoginWithEmail = ({setAuthentication, goToHome}) => {
   const {height, width} = useWindowDimensions();
-
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-
-  const handleMobileNumberChange = input => {
-    const numericInput = input.replace(/[^0-9]/g, '');
-    setMobileNumber(numericInput);
-  };
-
-  const dispatch = useDispatch();
-
-  const handleMain = async value => {
-    try {
-      if (mobileNumber == 123 && password == 'abc') {
-        dispatch(Auth(value));
-      } else {
-        //   ToastShow('Wrong UserName or Password');
-        alert('Mobile no and passward required');
-      }
-      dispatch(Auth(value));
-
-      // const response = await axios.post(
-      //   'https://tutor-tnyp.onrender.com/api/user/login',
-      //   {
-      //     email: 'pankaj@gmail.com',
-      //     password: 'pankaj@123',
-      //   },
-      // );
-
-      // console.log(response.data);
-      // dispatch(Auth(value));
-    } catch (error) {
-      console.error('Error:', error.message);
-      // Handle error, show a message, etc.
-    }
-  };
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -132,14 +104,13 @@ const Login = ({
                 onPress={() => setAuthentication(0)}
                 style={{
                   borderBottomWidth: 2,
+                  borderColor: '#2961D7' + '20',
                   width: '50%',
                   alignItems: 'center',
-                  borderColor: '#FF8921',
                   paddingBottom: 15,
                 }}>
                 <Text
                   style={{
-                    color: '#FF8921',
                     fontFamily: 'Manrope',
                     fontSize: 14,
                     lineHeight: 19,
@@ -153,11 +124,20 @@ const Login = ({
                 style={{
                   width: '50%',
                   alignItems: 'center',
-                  paddingBottom: 15,
                   borderBottomWidth: 2,
-                  borderColor: '#2961D7' + '20',
+                  borderColor: '#FF8921',
+                  paddingBottom: 15,
                 }}>
-                <Text>Email address</Text>
+                <Text
+                  style={{
+                    color: '#FF8921',
+                    fontFamily: 'Manrope',
+                    fontSize: 14,
+                    lineHeight: 19,
+                    fontWeight: '600',
+                  }}>
+                  Email address
+                </Text>
               </TouchableOpacity>
             </View>
             {/* Input */}
@@ -172,16 +152,16 @@ const Login = ({
                   marginBottom: 10,
                   fontWeight: '600',
                 }}>
-                Mobile Number
+                Email address
               </Text>
               <View
                 style={{
                   flexDirection: 'row',
+                  borderColor: '#2961D7' + '20',
                   alignItems: 'center',
                   marginHorizontal: 15,
                   borderWidth: 1,
                   borderRadius: 15,
-                  borderColor: '#2961D7' + '20',
                 }}>
                 <Image
                   resizeMode="contain"
@@ -190,10 +170,7 @@ const Login = ({
                 />
                 <TextInput
                   placeholder="Enter your mobile number"
-                  style={{marginLeft: 10, shadowColor: 'black'}}
-                  keyboardType="numeric"
-                  value={mobileNumber}
-                  onChangeText={handleMobileNumberChange}
+                  style={{marginLeft: 10, shadowColor: 'black', color: '#000'}}
                 />
               </View>
             </View>
@@ -213,12 +190,12 @@ const Login = ({
               <View
                 style={{
                   flexDirection: 'row',
+                  borderColor: '#2961D7' + '20',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   marginHorizontal: 15,
                   borderWidth: 1,
                   borderRadius: 15,
-                  borderColor: '#2961D7' + '20',
                 }}>
                 <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Image
@@ -228,7 +205,11 @@ const Login = ({
                   />
                   <TextInput
                     placeholder="Enter your passward"
-                    style={{marginLeft: 10, shadowColor: 'black'}}
+                    style={{
+                      marginLeft: 10,
+                      shadowColor: 'black',
+                      color: '#000',
+                    }}
                     secureTextEntry={!showPassword}
                     value={password}
                     onChangeText={text => setPassword(text)}
@@ -247,7 +228,7 @@ const Login = ({
             {/* fotgettext */}
             <TouchableOpacity
               style={{marginVertical: 15, width: '40%', alignSelf: 'flex-end'}}
-              onPress={() => navigation.navigate('ForgotPassward')}>
+              onPress={() => alert('Forgot passward?')}>
               <Text
                 style={{
                   textAlign: 'right',
@@ -275,7 +256,7 @@ const Login = ({
                 <Text
                   style={{color: '#2961D7'}}
                   onPress={() => alert('Terms & Conditions')}>
-                  Terms & Conditions
+                  Terms & Conditins
                 </Text>{' '}
                 and{' '}
                 <Text
@@ -285,10 +266,9 @@ const Login = ({
                 </Text>
               </Text>
             </View>
-            {/* Sign in */}
             <View style={{marginVertical: 10}}>
               <TouchableOpacity
-                onPress={() => handleMain('Main')}
+                onPress={goToHome}
                 style={{
                   backgroundColor: '#2961D7',
                   padding: 15,
@@ -308,7 +288,6 @@ const Login = ({
                 </Text>
               </TouchableOpacity>
             </View>
-
             <View style={{marginVertical: 25}}>
               <Text
                 style={{
@@ -333,6 +312,6 @@ const Login = ({
   );
 };
 
-export default Login;
+export default LoginWithEmail;
 
 const styles = StyleSheet.create({});

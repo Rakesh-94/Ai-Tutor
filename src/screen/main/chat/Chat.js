@@ -70,6 +70,7 @@ const Chat = ({navigation}) => {
             borderRadius: 20,
             borderWidth: 1,
             backgroundColor: 'blue',
+            color: '#000',
           }}
           // scrollToBottom={true}
         />

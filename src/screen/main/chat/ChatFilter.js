@@ -1,18 +1,3 @@
-// import {StyleSheet, Text, View} from 'react-native';
-// import React from 'react';
-
-// const ChatFilter = () => {
-//   return (
-//     <View>
-//       <Text>ChatFilter</Text>
-//     </View>
-//   );
-// };
-
-// export default ChatFilter;
-
-// const styles = StyleSheet.create({});
-
 import {
   StyleSheet,
   Text,
@@ -84,6 +69,12 @@ const ChatFilter = ({navigation}) => {
             borderRadius: 12,
             shadowColor: 'black',
             elevation: 5,
+            color: '#000',
+            ...Platform.select({
+              ios: {
+                paddingVertical: 15,
+              },
+            }),
           }}
           onChangeText={text => {
             setSearchText(text);

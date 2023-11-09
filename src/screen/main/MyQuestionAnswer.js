@@ -8,6 +8,7 @@ import {
   ScrollView,
   FlatList,
   TextInput,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import CartHeader from '../../components/CartHeader';
@@ -532,6 +533,12 @@ const MyQuestionAnswer = ({navigation}) => {
                       justifyContent: 'center',
                       alignItems: 'center',
                       textAlignVertical: 'top',
+                      color: '#000',
+                      ...Platform.select({
+                        ios: {
+                          paddingVertical: 15,
+                        },
+                      }),
                     }}
                   />
 

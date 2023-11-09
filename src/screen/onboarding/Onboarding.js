@@ -132,7 +132,7 @@ const OnBoarding = ({navitaion}) => {
             onPress={async () => {
               try {
                 if (activeIdx > 1) {
-                  handleAuth('Auth');
+                  handleAuth(true);
                 } else {
                   carouselRef.current.snapToNext();
                 }

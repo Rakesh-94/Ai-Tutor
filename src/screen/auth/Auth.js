@@ -1,7 +1,7 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import Login from './Login';
-import SignUp from './SignUp';
+import LoginWithEmail from './LoginWithEmail';
+import LoginWithPhone from './LoginWithPhone';
 
 const AuthLoginSignUP = ({navigation}) => {
   const [mobileNumber, setMobileNumber] = useState('');
@@ -11,7 +11,7 @@ const AuthLoginSignUP = ({navigation}) => {
   switch (authentication) {
     case 0:
       return (
-        <Login
+        <LoginWithPhone
           mobileNumber={mobileNumber}
           setMobileNumber={setMobileNumber}
           password={password}
@@ -21,9 +21,9 @@ const AuthLoginSignUP = ({navigation}) => {
         />
       );
     case 1:
-      return <SignUp setAuthentication={setAuthentication} />;
+      return <LoginWithEmail setAuthentication={setAuthentication} />;
     default:
-      return <Login />;
+      return <LoginWithPhone />;
   }
 };
 

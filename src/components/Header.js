@@ -39,6 +39,7 @@ const Header = props => {
           </View>
         </View>
       </View>
+
       <View style={{flexDirection: 'row', width: '30%', alignItems: 'center'}}>
         <TouchableOpacity
           style={{height: 30, width: 24}}
